@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Calculadora gráfica | {{ app_name }}{% endblock %}
+{% block content %}
+<section class="page-header">
+    <a class="back-link" href="{{ url_for('index') }}">← Todas as ferramentas</a>
+    <h1>Calculadora gráfica</h1>
+</section>
+<section class="tool-panel graph-panel">
+    <div class="graph-controls">
+        <label for="function-input">Função y =</label>
+        <input id="function-input" value="sin(x)" placeholder="Ex: x^2, sin(x), cos(x)">
+        <button id="plot-button" class="primary-button">Gerar gráfico</button>
+    </div>
+    <canvas id="graph" width="900" height="520" aria-label="Gráfico da função"></canvas>
+    <p class="hint">Exemplos: x^2 - 4, 2*x + 1, sin(x), sqrt(abs(x))</p>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/graph.js') }}"></script>{% endblock %}

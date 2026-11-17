@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Calculadora online | {{ app_name }}{% endblock %}
+{% block content %}
+<section class="page-header">
+    <a class="back-link" href="{{ url_for('index') }}">← Todas as ferramentas</a>
+    <h1>Calculadora online</h1>
+</section>
+<section class="tool-panel calculator" aria-label="Calculadora">
+    <input id="display" class="calc-display" value="0" readonly aria-label="Resultado">
+    <div class="calc-grid">
+        <button data-action="clear" class="calc-key accent">C</button>
+        <button data-value="(" class="calc-key">(</button>
+        <button data-value=")" class="calc-key">)</button>
+        <button data-action="back" class="calc-key">⌫</button>
+        <button data-value="7" class="calc-key">7</button>
+        <button data-value="8" class="calc-key">8</button>
+        <button data-value="9" class="calc-key">9</button>
+        <button data-value="/" class="calc-key operator">÷</button>
+        <button data-value="4" class="calc-key">4</button>
+        <button data-value="5" class="calc-key">5</button>
+        <button data-value="6" class="calc-key">6</button>
+        <button data-value="*" class="calc-key operator">×</button>
+        <button data-value="1" class="calc-key">1</button>
+        <button data-value="2" class="calc-key">2</button>
+        <button data-value="3" class="calc-key">3</button>
+        <button data-value="-" class="calc-key operator">−</button>
+        <button data-value="0" class="calc-key">0</button>
+        <button data-value="." class="calc-key">.</button>
+        <button data-action="equals" class="calc-key equals">=</button>
+        <button data-value="+" class="calc-key operator">+</button>
+    </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/calculator.js') }}"></script>{% endblock %}

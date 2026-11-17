@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Lei de Ohm | {{ app_name }}{% endblock %}
+{% block content %}
+<section class="page-header">
+    <a class="back-link" href="{{ url_for('index') }}">← Todas as ferramentas</a>
+    <h1>Calculadora da Lei de Ohm</h1>
+    <p>Informe quaisquer dois valores conhecidos.</p>
+</section>
+<section class="tool-panel form-panel">
+    <div class="field-grid">
+        <label>Tensão (V)<input id="voltage" type="number" step="any"></label>
+        <label>Corrente (A)<input id="current" type="number" step="any"></label>
+        <label>Resistência (Ω)<input id="resistance" type="number" step="any"></label>
+        <label>Potência (W)<input id="power" type="number" step="any"></label>
+    </div>
+    <button id="calculate-ohm" class="primary-button">Calcular</button>
+    <button id="clear-ohm" class="secondary-button">Limpar</button>
+    <p id="ohm-error" class="error" role="alert"></p>
+    <p id="ohm-result" class="result" aria-live="polite"></p>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/ohm.js') }}"></script>{% endblock %}

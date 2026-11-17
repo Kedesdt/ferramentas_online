@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Queda de tensão em cabos | {{ app_name }}{% endblock %}
+{% block content %}
+<section class="page-header">
+    <a class="back-link" href="{{ url_for('index') }}">← Todas as ferramentas</a>
+    <h1>Queda de tensão em cabos</h1>
+    <p>Estimativa de circuito simples em CA ou CC.</p>
+</section>
+<section class="tool-panel form-panel">
+    <div class="field-grid">
+        <label>Tensão (V)<input id="supply" type="number" step="any" value="220"></label>
+        <label>Corrente (A)<input id="load-current" type="number" step="any" value="10"></label>
+        <label>Comprimento do cabo (m)<input id="length" type="number" step="any" value="20"></label>
+        <label>Área da seção (mm²)<input id="section" type="number" step="any" value="2.5"></label>
+        <label>Resistividade
+            <select id="material">
+                <option value="0.0172">Cobre - 0,0172 Ω·mm²/m</option>
+                <option value="0.0282">Alumínio - 0,0282 Ω·mm²/m</option>
+            </select>
+        </label>
+        <label>Sistema
+            <select id="system">
+                <option value="2">Monofásico / CC (ida e volta)</option>
+                <option value="1.732">Trifásico (3 condutores)</option>
+            </select>
+        </label>
+    </div>
+    <button id="calculate-cable" class="primary-button">Calcular</button>
+    <p id="cable-error" class="error" role="alert"></p>
+    <p id="cable-result" class="result" aria-live="polite"></p>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/cable.js') }}"></script>{% endblock %}

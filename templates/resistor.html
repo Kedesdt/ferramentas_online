@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Código de cores | {{ app_name }}{% endblock %}
+{% block content %}
+<section class="page-header">
+    <a class="back-link" href="{{ url_for('index') }}">← Todas as ferramentas</a>
+    <h1>Código de cores de resistores</h1>
+    <p>Selecione as cores para calcular a resistência de um resistor de 4 faixas.</p>
+</section>
+<section class="tool-panel">
+    <div class="resistor-preview" aria-hidden="true">
+        <span id="band1" class="band"></span>
+        <span id="band2" class="band"></span>
+        <span id="band3" class="band"></span>
+        <span id="band4" class="band tolerance"></span>
+    </div>
+    <div class="field-grid">
+        <label>1ª faixa<select id="r-band1"></select></label>
+        <label>2ª faixa<select id="r-band2"></select></label>
+        <label>Multiplicador<select id="r-band3"></select></label>
+        <label>Tolerância<select id="r-band4"></select></label>
+    </div>
+    <p id="resistor-result" class="result" aria-live="polite"></p>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/resistor.js') }}"></script>{% endblock %}

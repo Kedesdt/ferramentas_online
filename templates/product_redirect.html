@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Você será redirecionado | {{ app_name }}{% endblock %}
+{% block content %}
+<section class="redirect-card">
+    <p class="eyebrow">Link externo</p>
+    <h1>Você será direcionado para um produto</h1>
+    <p>Você está saindo das <strong>{{ app_name }}</strong> para visitar <strong>{{ name }}</strong>.</p>
+    {% if url %}
+    <a id="continue-link" class="primary-button" href="{{ url }}" target="_blank" rel="sponsored noopener noreferrer">Continuar em nova aba</a>
+    {% else %}
+    <p class="error">Este produto ainda não possui um endereço configurado.</p>
+    {% endif %}
+    <a class="back-link" href="{{ url_for('index') }}">Voltar às ferramentas</a>
+</section>
+{% endblock %}

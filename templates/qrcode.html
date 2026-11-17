@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Gerador de QR Code | {{ app_name }}{% endblock %}
+{% block content %}
+<section class="page-header">
+    <a class="back-link" href="{{ url_for('index') }}">← Todas as ferramentas</a>
+    <h1>Gerador de QR Code</h1>
+</section>
+<section class="tool-panel split-panel">
+    <div class="form-column">
+        <label for="qr-value">Texto ou endereço</label>
+        <textarea id="qr-value" rows="5" placeholder="https://seusite.com.br"></textarea>
+        <button id="generate-qr" class="primary-button">Gerar QR Code</button>
+    </div>
+    <div class="result-column">
+        <div id="qr-placeholder" class="qr-placeholder">Seu QR Code aparecerá aqui</div>
+        <img id="qr-image" alt="QR Code gerado" hidden>
+    </div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script>
+const button = document.querySelector("#generate-qr");
+const input = document.querySelector("#qr-value");
+const image = document.querySelector("#qr-image");
+const placeholder = document.querySelector("#qr-placeholder");
+button.addEventListener("click", () => {
+    const value = input.value.trim();
+    if (!value) {
+        input.focus();
+        return;
+    }
+    image.src = "{{ url_for('qrcode_image') }}?value=" + encodeURIComponent(value);
+    image.hidden = false;
+    placeholder.hidden = true;
+});
+</script>
+{% endblock %}
